@@ -1,0 +1,24 @@
+name: 'Build an Alfred Workflow'
+description: 'Compile contents of a workflow dir to a ZIP file with extension .alfredworkflow'
+author: 'mperezi'
+branding:
+  icon: 'archive'
+  color: 'yellow'
+inputs:
+  workflow_dir:
+    description: 'Directory containing the sources of the workflow'
+    required: false
+    default: 'workflow'
+  exclude_patterns:
+    description: 'List of excluded files/directories'
+    required: false
+    default: ''
+outputs:
+  workflow_file:
+    description: 'The name of the created .alfredworkflow file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.workflow_dir }}
+    - ${{ inputs.exclude_patterns }}
