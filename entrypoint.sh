@@ -36,7 +36,7 @@ clean() {
 zip_dir() {
 	local dir=$1
 	pushd $dir >/dev/null
-		zip \
+		zip --symlinks \
 			$OUTPUT_FILE \
 			$(find .) \
 			$(exclude_args)
