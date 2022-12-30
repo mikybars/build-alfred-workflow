@@ -13,12 +13,17 @@ inputs:
     description: 'List of excluded files/directories'
     required: false
     default: ''
+  tag_name:
+    description: 'The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag'
+    required: true
 outputs:
   workflow_file:
     description: 'The name of the created .alfredworkflow file'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    TAG_NAME: ${{ inputs.tag_name }}
   args:
     - ${{ inputs.workflow_dir }}
     - ${{ inputs.exclude_patterns }}

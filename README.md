@@ -40,6 +40,7 @@ jobs:
       with:
         workflow_dir: src
         exclude_patterns: '*.pyc *__pycache__/*'
+        tag_name: ${{ github.ref_name }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
