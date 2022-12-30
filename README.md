@@ -35,7 +35,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Alfred Workflow
-    	id: alfred_builder
+      id: alfred_builder
       uses: mperezi/build-alfred-workflow@v1
       with:
         workflow_dir: src
