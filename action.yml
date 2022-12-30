@@ -15,7 +15,7 @@ inputs:
     default: ''
   tag_name:
     description: 'The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag'
-    required: true
+    required: false
 outputs:
   workflow_file:
     description: 'The name of the created .alfredworkflow file'
