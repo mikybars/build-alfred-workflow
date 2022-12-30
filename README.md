@@ -13,6 +13,40 @@ This action needs a file named `info.plist` with the metadata of your workflow i
 
 * `workflow_dir`: Directory containing the sources of the workflow (defaults to `workflow`)
 * `exclude_patterns`: List of excluded files/directories
+* `template_files`: List of comma separated paths to files that would be used to template your `info.plist` file.
+> #### Why it can be helpful?
+> let's imagine that you have a `Script filter` where you wrote your python code,
+> but you would like to develop the code using an IDE like pycharm, so using the option you can form your workflow from several files.
+> 
+> #### Usage:
+>  To be able to add content of the files into you should put a template string into `info.plist` with the following structure:
+   `TEMPLATE_THIS_[0-9]+`.  
+   For example, if you want to put content of two files into `info.plist`, you should set 
+   `template_files: "example1.py,example2.py"`, and put the template strings to the `info.plist` 
+> ```xml
+> ...
+> <string>TEMPLATE_THIS_1
+> </string>
+> ...
+> <string>TEMPLATE_THIS_2
+> </string>
+> ...
+> ```
+> each file will correspond to each template accordingly: `example1.py` will replace `TEMPLATE_THIS_1` and  `example2.py` will replace `TEMPLATE_THIS_2`  
+> also you can put one file several times, just put the same template string to several places:
+> ```xml
+> ...
+> <string>TEMPLATE_THIS_1
+> </string>
+> ...
+> <string>TEMPLATE_THIS_2
+> </string>
+> ...
+> <string>TEMPLATE_THIS_1
+> </string>
+> ...
+> ```
+> 
 
 ### Outputs
 

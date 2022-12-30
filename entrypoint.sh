@@ -5,6 +5,10 @@ set -o noglob
 
 WORKFLOW_DIR="$1"
 EXCLUDE_PATTERNS="$2"
+if [[ "$3" ]]; then
+    export TEMPLATE_FILES="$3"
+fi
+
 
 abort() {
 	echo $1 >&2
@@ -58,6 +62,10 @@ set_output() {
 
 check_info_plist
 check_workflow_dir
+
+if [[ "$3" ]]; then
+  /template_info_plist.py info.plist
+fi
 
 OUTPUT_FILE="${PWD}/$(/extract_name.py info.plist)"
 
