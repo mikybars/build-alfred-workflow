@@ -13,6 +13,7 @@ This action needs a file named `info.plist` with the metadata of your workflow i
 
 * `workflow_dir`: Directory containing the sources of the workflow (defaults to `workflow`)
 * `exclude_patterns`: List of excluded files/directories
+* `tag_name`: Git tag name, it should be equal to `${{ github.ref_name }}`. It updates the workflow version (it updates `info.plist` version)
 
 ### Outputs
 
