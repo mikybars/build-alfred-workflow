@@ -26,3 +26,4 @@ runs:
   args:
     - ${{ inputs.workflow_dir }}
     - ${{ inputs.exclude_patterns }}
+    - ${{ inputs.template_files }}
