@@ -13,6 +13,10 @@ inputs:
     description: 'List of excluded files/directories'
     required: false
     default: ''
+  template_files:
+    description: 'List of comma separated paths to files that would be used to template your `info.plist` file. See README.md for an additional info'
+    required: false
+    default: ''
 outputs:
   workflow_file:
     description: 'The name of the created .alfredworkflow file'
