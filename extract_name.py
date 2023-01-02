@@ -42,14 +42,21 @@ def main():
         sys.exit(3)
 
     workflow_file = safename(info['name'])
-    if 'version' in info:
-        release_tag_name = os.environ.get("TAG_NAME")
-        # if the workflow run on a new release,
-        # update the info plist version to match the same version
-        if release_tag_name:
-            release_tag_name = release_tag_name.replace('refs/tags/', '')
-            info['version'] = release_tag_name
+
+    custom_version = os.environ.get("CUSTOM_VERSION")
+    # The sanitization regexp of the custom version
+    custom_sanitize_regexp = re.compile("^\S{,15}")
+    # if the workflow run on a new release,
+    # update the info plist version to match the same version
+    if custom_version:
+        # if the custom version is `github.ref`, then sanitize it to exact tag name
+        custom_version = custom_version.replace('refs/tags/', '')
+        sanitized_custom_version = custom_sanitize_regexp.findall(custom_version)[0]
+        if sanitized_custom_version:
+            info['version'] = custom_version
             plistlib.writePlist(info, info_plist)
+
+    if 'version' in info:
         workflow_file += '-{}'.format(info['version'])
     workflow_file += '.alfredworkflow'
 
