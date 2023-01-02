@@ -1,6 +1,6 @@
 name: 'Build an Alfred Workflow'
 description: 'Compile contents of a workflow dir to a ZIP file with extension .alfredworkflow'
-author: 'mperezi'
+author: 'almibarss'
 branding:
   icon: 'archive'
   color: 'yellow'
