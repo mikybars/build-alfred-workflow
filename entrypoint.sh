@@ -51,8 +51,9 @@ zip_files() {
 }
 
 set_output() {
-	local var_name=$1 value=$2
-	echo "::set-output name=${var_name}::${value}"
+	local name=$1
+	local value=$2
+	echo "${name}=${value}" >> $GITHUB_OUTPUT
 }
 
 
