@@ -13,6 +13,7 @@ This action needs a file named `info.plist` with the metadata of your workflow i
 
 * `workflow_dir`: Directory containing the sources of the workflow (defaults to `workflow`)
 * `exclude_patterns`: List of excluded files/directories
+* `custom_version`: String that will override the workflow version (a git tag name for example).
 
 ### Outputs
 
@@ -40,6 +41,7 @@ jobs:
       with:
         workflow_dir: src
         exclude_patterns: '*.pyc *__pycache__/*'
+        custom_version: ${{ github.ref_name }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1

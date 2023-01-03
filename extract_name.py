@@ -42,8 +42,14 @@ def main():
         sys.exit(3)
 
     workflow_file = safename(info['name'])
+
+    custom_version = os.environ.get("CUSTOM_VERSION")
+    if custom_version:
+        info['version'] = custom_version
+        plistlib.writePlist(info, info_plist)
+
     if 'version' in info:
-        workflow_file += '-{}'.format(info['version'])
+        workflow_file += '-{}'.format(safename(info['version']))
     workflow_file += '.alfredworkflow'
 
     print(workflow_file)

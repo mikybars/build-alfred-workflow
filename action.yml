@@ -13,12 +13,17 @@ inputs:
     description: 'List of excluded files/directories'
     required: false
     default: ''
+  custom_version:
+    description: 'String that will override the workflow version'
+    required: false
 outputs:
   workflow_file:
     description: 'The name of the created .alfredworkflow file'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    CUSTOM_VERSION: ${{ inputs.custom_version }}
   args:
     - ${{ inputs.workflow_dir }}
     - ${{ inputs.exclude_patterns }}
