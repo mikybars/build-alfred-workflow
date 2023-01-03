@@ -13,7 +13,7 @@ This action needs a file named `info.plist` with the metadata of your workflow i
 
 * `workflow_dir`: Directory containing the sources of the workflow (defaults to `workflow`)
 * `exclude_patterns`: List of excluded files/directories
-* `custom_version`: Custom version of your alfred workflow (like git tag name). It will sanitize the version using the regexp `^\S{,15}`. It updates the workflow version (it updates `info.plist` version)
+* `custom_version`: String that will override the workflow version (a git tag name for example).
 
 ### Outputs
 
